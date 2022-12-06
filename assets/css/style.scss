@@ -21,13 +21,13 @@
     --box-shadow: 0 0 2em 0 rgba(28, 28, 28, 0.5);
 
     // Dark mode
-    --dark-primary-color: #FFF;
+    --dark-primary-color: #FFFFFF;
     --dark-secondary-color: #000;
     --dark-aside-bg-color: #090C12;
     --dark-body-bg-color: linear-gradient(-90deg, #090C12, #1f2d48);
-    --dark-input-bg-color: #40464E;
-    --dark-input-color: #97A2A4;
-    --dark-slider-thumb-color: #FFF;
+    --dark-input-bg-color: #636566;
+    --dark-input-color: #FFFFFF;
+    --dark-slider-thumb-color: #FFFFFF;
     --dark-glass-bg-color: rgba(0,0,0,0.25);
     --dark-glass-border-color: rgba(0,0,0,0.3);
     --dark-glass-border: 0.1em solid var(--dark-glass-border-color);
@@ -108,7 +108,7 @@ body {
                         .shadow__value {
                             p {
                                 color: var(--primary-gradient-color);
-                                text-shadow: 0 0 .3em var(--primary-gradient-color), 0 0 .5em var(--secondary-gradient-color);
+                                text-shadow: 0 0 .15em var(--primary-gradient-color), 0 0 .25em var(--secondary-gradient-color);
                             }
                         }
                     }
@@ -546,7 +546,7 @@ footer {
 
 @media screen and (max-width: 800px){
     body {
-        font-size: 75%;
+        font-size: 100%;
         &.dark {
             header {
                 background: var(--dark-aside-bg-color);
@@ -570,6 +570,7 @@ footer {
             background: var(--aside-bg-color);
             h1 {
                 font-weight: bold;
+                font-size: 1.5em;
                 color: var(--primary-color);
             }
         }
@@ -584,10 +585,22 @@ footer {
                     width: 100%;
                     .shadow__option {
                         .shadow__input {
-                            width: 90%;
+                            width: 82%;
                         }
                         .shadow__value {
-                            width: 10%;
+                            width: 18%;
+                        }
+                    }
+                    .environment__option {
+                        .environment__inputs {
+                            input:not([type="color"]) {
+                                min-height: 48px;
+                            }
+                            input[type="color"] {
+                                width: 3em;
+                                height: 3.3em;
+                                padding: 0.3em;
+                            }
                         }
                     }
                 }
