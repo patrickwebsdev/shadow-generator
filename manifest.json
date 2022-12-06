@@ -1,15 +1,7 @@
 {
     "short_name": "Shadow Generator",
     "name": "Box Shadow Generator | PatrickWebs",
-    "icons": [
-    {
-      "src":"",
-      "sizes": "",
-      "type": ""
-    }
-   ],
-   "start_url": "",
-   "background_color": "#090C12",
-   "Theme_color": "#1f2d48",
-   "display": ""
+    "start_url": "",
+    "background_color": "#090C12",
+    "Theme_color": "#1f2d48"
 }
