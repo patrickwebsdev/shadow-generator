@@ -140,7 +140,7 @@ function hexToRGB(hex, opacity) {
       green = "0x" + hex[2] + hex[2];
       blue = "0x" + hex[3] + hex[3];
     }
-    else if (h.length == 7) {
+    else if (hex.length == 7) {
       red = "0x" + hex[1] + hex[2];
       green = "0x" + hex[3] + hex[4];
       blue = "0x" + hex[5] + hex[6];
