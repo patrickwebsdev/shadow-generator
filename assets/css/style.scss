@@ -644,5 +644,10 @@ footer {
     src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
 }
 .accessibilityHack {
-    display: none;
+    height: 0px;
+    width: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
 }
