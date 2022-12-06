@@ -139,7 +139,6 @@ svg {
     }
 }
 
-/* Config paragraph from web */
 body {
     min-height: 100vh;
     font-size: 100%;
@@ -546,7 +545,7 @@ body {
                                 button {
                                     color: #FFF;
                                     font-weight: bold;
-                                    font-family: "Roboto";
+                                    font-family: var(--secondary-font);
                                     cursor: pointer;
                                 }
                             }
