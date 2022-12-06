@@ -158,7 +158,7 @@ body {
             }
         }
         footer {
-            h2 {
+            h3 {
                 color: var(--dark-primary-color);
             }
         }
@@ -469,7 +469,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    h2 {
+    h3 {
         font-size: 1em;
         display: flex;
         justify-content: center;
@@ -561,7 +561,7 @@ footer {
             }
             footer {
                 background-color: var(--dark-aside-bg-color);
-                h2 {
+                h3 {
                     color: var(--dark-primary-color);
                 }
             }
@@ -623,7 +623,7 @@ footer {
         }
         footer {
             background-color: var(--aside-bg-color);
-            h2 {
+            h3 {
                 color: var(--primary-color);
             }
         }
