@@ -53,7 +53,7 @@ body {
         .bi-moon-stars-fill {
             display: none;
         }
-        #toggle__mode {
+        #toggleMode {
             background: var(--dark-aside-bg-color);
             box-shadow: var(--box-shadow);
             svg, svg * {
@@ -69,7 +69,7 @@ body {
         .bi-brightness-high-fill {
             display: none;
         }
-        #toggle__mode {
+        #toggleMode {
             background: var(--aside-bg-color);
             box-shadow: var(--box-shadow);
             svg, svg * {
@@ -497,7 +497,7 @@ footer {
     display: none;
 }
 // Toggle mode dark/light mode
-#toggle__mode {
+#toggleMode {
     position: fixed;
     right: 0;
     bottom: 30vh;
@@ -627,7 +627,7 @@ footer {
                 color: var(--primary-color);
             }
         }
-        #toggle__mode {
+        #toggleMode {
             position: fixed;
             bottom: 3vh;
             width: 5em;

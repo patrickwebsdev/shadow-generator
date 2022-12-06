@@ -1,84 +1,84 @@
 
-let horizontal__input = document.getElementById("horizontal__shadow");
-let horizontal__output = document.getElementById("horizontal__value");
-horizontal__input.oninput = function() {
-    horizontal__output.innerHTML = (this.value / 10);
+let horizontalInput = document.getElementById("horizontalShadow");
+let horizontalOutput = document.getElementById("horizontalValue");
+horizontalInput.oninput = function() {
+    horizontalOutput.innerHTML = (this.value / 10);
     shadow_changes();
 }
 
-let vertical__input = document.getElementById("vertical__shadow");
-let vertical__output = document.getElementById("vertical__value");
-vertical__input.oninput = function() {
-    vertical__output.innerHTML = (this.value / 10);
+let verticalInput = document.getElementById("verticalShadow");
+let verticalOutput = document.getElementById("verticalValue");
+verticalInput.oninput = function() {
+    verticalOutput.innerHTML = (this.value / 10);
     shadow_changes();
 }
 
-let blur__input = document.getElementById("blur__shadow");
-let blur__output = document.getElementById("blur__value");
-blur__input.oninput = function() {
-    blur__output.innerHTML = (this.value / 10);
+let blurInput = document.getElementById("blurShadow");
+let blurOutput = document.getElementById("blurValue");
+blurInput.oninput = function() {
+    blurOutput.innerHTML = (this.value / 10);
     shadow_changes();
 }
 
-let spread__input = document.getElementById("spread__shadow");
-let spread__output = document.getElementById("spread__value");
-spread__input.oninput = function() {
-    spread__output.innerHTML = (this.value / 10);
+let spreadInput = document.getElementById("spreadShadow");
+let spreadOutput = document.getElementById("spreadValue");
+spreadInput.oninput = function() {
+    spreadOutput.innerHTML = (this.value / 10);
     shadow_changes();
 }
 
-let color__input = document.getElementById("color__shadow__hex");
-color__input.addEventListener("change", function() {
-    color__input__color.value = this.value;
+let colorInput = document.getElementById("colorShadowHex");
+colorInput.addEventListener("change", function() {
+    colorInputColor.value = this.value;
     shadow_changes();
 }, false);
 
-let color__input__color = document.getElementById("color__shadow");
-color__input__color.addEventListener("input", function() {
-    color__input.value = this.value;
+let colorInputColor = document.getElementById("colorShadow");
+colorInputColor.addEventListener("input", function() {
+    colorInput.value = this.value;
     shadow_changes();
 }, false);
 
-let opacity__input = document.getElementById("opacity__shadow");
-let opacity__output = document.getElementById("opacity__value");
-opacity__input.oninput = function() {
-    opacity__output.innerHTML = (this.value / 100);
+let opacityInput = document.getElementById("opacityShadow");
+let opacityOutput = document.getElementById("opacityValue");
+opacityInput.oninput = function() {
+    opacityOutput.innerHTML = (this.value / 100);
     shadow_changes();
 }
 
-let background__input = document.getElementById("background__enviroment");
-background__input.addEventListener("change", function() {
-    background__input__color.value = this.value;
+let backgroundInput = document.getElementById("backgroundEnviroment");
+backgroundInput.addEventListener("change", function() {
+    backgroundInputColor.value = this.value;
     shadow_changes();
 }, false);
 
-let background__input__color = document.getElementById("background__color");
-background__input__color.addEventListener("input", function() {
-    background__input.value = this.value;
+let backgroundInputColor = document.getElementById("backgroundColor");
+backgroundInputColor.addEventListener("input", function() {
+    backgroundInput.value = this.value;
     shadow_changes();
 }, false);
 
-let box__input = document.getElementById("box__enviroment");
-box__input.addEventListener("change", function() {
-    box__input__color.value = this.value;
+let boxInput = document.getElementById("boxEnviroment");
+boxInput.addEventListener("change", function() {
+    boxInputColor.value = this.value;
     shadow_changes();
 }, false);
 
-let box__input__color = document.getElementById("box__color");
-box__input__color.addEventListener("input", function() {
-    box__input.value = this.value;
+let boxInputColor = document.getElementById("boxColor");
+boxInputColor.addEventListener("input", function() {
+    boxInput.value = this.value;
     shadow_changes();
 }, false);
 
 let clipboard = document.getElementById("copyToClipboard");
 clipboard.addEventListener("click", function(e){
     e.preventDefault();
-    let horizontal = (horizontal__input.value / 10);
-    let vertical = (vertical__input.value / 10);
-    let blur = (blur__input.value / 10);
-    let spread = (spread__input.value / 10);
-    let color = color__input.value;
-    let opacity = (opacity__input.value / 100);
+    let horizontal = (horizontalInput.value / 10);
+    let vertical = (verticalInput.value / 10);
+    let blur = (blurInput.value / 10);
+    let spread = (spreadInput.value / 10);
+    let color = colorInput.value;
+    let opacity = (opacityInput.value / 100);
     let shadowConfig = horizontal + "em " + vertical + "em " + blur + "em " + spread + "em " + hexToRGB(color, opacity);
     let clipboardText = document.getElementById("clipboard");
     clipboardText.innerHTML = `box-shadow: ${shadowConfig}
@@ -93,7 +93,7 @@ clipboard.addEventListener("click", function(e){
     }, 2000);
 });
 
-let darkMode = document.getElementById("toggle__mode");
+let darkMode = document.getElementById("toggleMode");
 darkMode.addEventListener("click", function(e){
     e.preventDefault();
     document.body.classList.toggle('dark');
@@ -101,31 +101,31 @@ darkMode.addEventListener("click", function(e){
 
 
 function shadow_changes(){
-    let horizontal = (horizontal__input.value / 10);
-    let vertical = (vertical__input.value / 10);
-    let blur = (blur__input.value / 10);
-    let spread = (spread__input.value / 10);
-    let color = color__input.value;
-    let opacity = (opacity__input.value / 100);
-    let shadowBox = document.getElementById("shadow__container");
-    let background__enviroment = background__input.value;
-    let box__enviroment = box__input.value;
+    let horizontal = (horizontalInput.value / 10);
+    let vertical = (verticalInput.value / 10);
+    let blur = (blurInput.value / 10);
+    let spread = (spreadInput.value / 10);
+    let color = colorInput.value;
+    let opacity = (opacityInput.value / 100);
+    let shadowBox = document.getElementById("shadowContainer");
+    let backgroundEnviroment = backgroundInput.value;
+    let boxEnviroment = boxInput.value;
     let boxShadow = horizontal + "em " + vertical + "em " + blur + "em " + spread + "em " + hexToRGB(color, opacity)
     shadowBox.style.boxShadow = boxShadow;
     shadowBox.style.webkitBoxShadow = boxShadow;
     shadowBox.style.mozBoxShadow = boxShadow;
-    shadowBox.style.background = box__enviroment;
+    shadowBox.style.background = boxEnviroment;
     document.getElementById("normal").innerHTML = boxShadow;
     document.getElementById("webkit").innerHTML = boxShadow;
     document.getElementById("moz").innerHTML = boxShadow;
-    document.getElementById("shadow_background").style.background = background__enviroment;
+    document.getElementById("shadowBackground").style.background = backgroundEnviroment;
 }
 document.addEventListener('DOMContentLoaded', function(){
-    horizontal__output.innerHTML = (horizontal__input.value / 10);
-    vertical__output.innerHTML = (vertical__input.value / 10);
-    blur__output.innerHTML = (blur__input.value / 10);
-    spread__output.innerHTML = (spread__input.value / 10);
-    opacity__output.innerHTML = (opacity__input.value / 100);
+    horizontalOutput.innerHTML = (horizontalInput.value / 10);
+    verticalOutput.innerHTML = (verticalInput.value / 10);
+    blurOutput.innerHTML = (blurInput.value / 10);
+    spreadOutput.innerHTML = (spreadInput.value / 10);
+    opacityOutput.innerHTML = (opacityInput.value / 100);
     shadow_changes();
 })
 
