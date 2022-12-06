@@ -84,9 +84,9 @@ clipboard.addEventListener("click", function(e){
     let opacity = (opacityInput.value / 100);
     let shadowConfig = horizontal + "em " + vertical + "em " + blur + "em " + spread + "em " + hexToRGB(color, opacity);
     let clipboardText = document.getElementById("clipboard");
-    clipboardText.innerHTML = `box-shadow: ${shadowConfig}
--webkit-box-shadow: ${shadowConfig}
--moz-box-shadow: ${shadowConfig}`;
+    clipboardText.innerHTML = `box-shadow: ${shadowConfig};
+-webkit-box-shadow: ${shadowConfig};
+-moz-box-shadow: ${shadowConfig};`;
     clipboardText.select();
     clipboardText.setSelectionRange(0, 99999);
     navigator.clipboard.writeText(clipboardText.value);
@@ -99,6 +99,7 @@ clipboard.addEventListener("click", function(e){
 darkMode.addEventListener("click", function(e){
     e.preventDefault();
     document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
 });
 
 
