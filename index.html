@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="generator, shadow, box shadow, box-shadow, website, box shadow generator, box-shadow generator, html, html5, css, css3">
+    <meta property="og:title" content="Box-Shadow Generator">
+    <meta name="description" content="Box shadow generator for css">
+	<meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/social_media_logo.png">
+    <meta property="og:url" itemprop="image" content="">
+    <meta name="og:description" content="Box shadow generator for css">
+    <meta name="author" content="PatrickWebs">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>Box shadow generator</title>
+    <link rel="stylesheet" href="assets/css/style.min.css">
+</head>
+<body class="dark">
+    <header>
+        <img src="assets/img/logo.svg">
+        <h1>Box shadow generator</h1>
+    </header>
+    <main>
+        <div class="main__container">
+            <aside>
+                <h3>Shadow options</h3>
+                <div class="shadow__option">
+                    <div class="shadow__input">
+                        <label for="horizontal__shadow">Horizontal shadow</label>
+                        <input type="range" min="-100" max="100" value="0" class="shadow__slider" id="horizontal__shadow">
+                    </div>
+                    <div class="shadow__value">
+                        <p id="horizontal__value">0</p>
+                    </div>
+                </div>
+                <div class="shadow__option">
+                    <div class="shadow__input">
+                        <label for="vertical__shadow">Vertical shadow</label>
+                        <input type="range" min="-100" max="100" value="0" class="shadow__slider" id="vertical__shadow">
+                    </div>
+                    <div class="shadow__value">
+                        <p id="vertical__value">0</p>
+                    </div>
+                </div>
+                <div class="shadow__option">
+                    <div class="shadow__input">
+                        <label for="blur__shadow">Blur shadow</label>
+                        <input type="range" min="0" max="100" value="20" class="shadow__slider" id="blur__shadow">
+                    </div>
+                    <div class="shadow__value">
+                        <p id="blur__value">0</p>
+                    </div>
+                </div>
+                <div class="shadow__option">
+                    <div class="shadow__input">
+                        <label for="spread__shadow">Spread radius</label>
+                        <input type="range" min="0" max="100" value="1" class="shadow__slider" id="spread__shadow">
+                    </div>
+                    <div class="shadow__value">
+                        <p id="spread__value">0</p>
+                    </div>
+                </div>
+                <div class="environment__option">
+                    <div class="environment__label">
+                        <label for="color__shadow__hex">Shadow color</label>
+                    </div>
+                    <div class="environment__inputs">
+                        <input type="text" id="color__shadow__hex" value="#000000">
+                        <input type="color" id="color__shadow" value="#000000">
+                    </div>
+                </div>
+                <div class="shadow__option">
+                    <div class="shadow__input">
+                        <label for="opacity__shadow">Shadow opacity</label>
+                        <input type="range" min="0" max="100" value="75" class="shadow__slider" id="opacity__shadow">
+                    </div>
+                    <div class="shadow__value">
+                        <p id="opacity__value">0</p>
+                    </div>
+                </div>
+                <h3 class="mt__spacing">Experimental environment</h3>
+                <div class="environment__option">
+                    <div class="environment__label">
+                        <label for="background__enviroment">Website background color</label>
+                    </div>
+                    <div class="environment__inputs">
+                        <input type="text" id="background__enviroment" value="#FFFFFF">
+                        <input type="color" id="background__color" value="#FFFFFF">
+                    </div>
+                </div>
+                <div class="environment__option">
+                    <div class="environment__label">
+                        <label for="box__enviroment">Box background color</label>
+                    </div>
+                    <div class="environment__inputs">
+                        <input type="text" id="box__enviroment" value="#FFFFFF">
+                        <input type="color" id="box__color" value="#FFFFFF">
+                    </div>
+                </div>
+            </aside>
+            <section>
+                <article class="code">
+                    <div class="code__container">
+                        <div class="code__header">
+                            <div class="code__controls">
+                                <div class="code__control code__close"></div>
+                                <div class="code__control code__minimize"></div>
+                                <div class="code__control code__maximize"></div>
+                            </div>
+                            <div class="code__title">shadow-generator.css</div>
+                        </div>
+                        <div class="code__body">
+                            <p class="code__text"><span>box-shadow</span><span>: </span><span id="normal">0 0 0 0 rgba(0,0,0,1)</span><span>;</span></span></p>
+                            <p class="code__text"><span>-webkit-box-shadow</span><span>: </span><span id="webkit">0 0 0 0 rgba(0,0,0,1)</span><span>;</span></p>
+                            <p class="code__text"><span>-moz-box-shadow</span><span>: </span><span id="moz">0 0 0 0 rgba(0,0,0,1)</span><span>;</span></p>
+                        </div>
+                        <div class="code__footer">
+                            <button id="copyToClipboard">Click to copy</button>
+                        </div>
+                    </div>
+                </article>
+                <article class="shadow" id="shadow_background">
+                    <div class="shadow__container" id="shadow__container">
+
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <h3 class="developer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.2425 3.02985C14.7783 3.1638 15.1041 3.70673 14.9701 4.24253L10.9701 20.2425C10.8362 20.7783 10.2933 21.1041 9.75746 20.9701C9.22167 20.8362 8.89591 20.2933 9.02986 19.7575L13.0299 3.75746C13.1638 3.22166 13.7067 2.8959 14.2425 3.02985ZM6.70711 6.29289C7.09763 6.68341 7.09763 7.31658 6.70711 7.7071L2.41421 12L6.70711 16.2929C7.09763 16.6834 7.09763 17.3166 6.70711 17.7071C6.31658 18.0976 5.68342 18.0976 5.29289 17.7071L0.292893 12.7071C-0.0976311 12.3166 -0.0976311 11.6834 0.292893 11.2929L5.29289 6.29289C5.68342 5.90236 6.31658 5.90236 6.70711 6.29289ZM17.2929 6.29289C17.6834 5.90236 18.3166 5.90236 18.7071 6.29289L23.7071 11.2929C24.0976 11.6834 24.0976 12.3166 23.7071 12.7071L18.7071 17.7071C18.3166 18.0976 17.6834 18.0976 17.2929 17.7071C16.9024 17.3166 16.9024 16.6834 17.2929 16.2929L21.5858 12L17.2929 7.7071C16.9024 7.31658 16.9024 6.68341 17.2929 6.29289Z" fill="#293644"/></g><defs><clipPath id="clip0"><rect width="24" height="24" fill="white"/></clipPath></defs></svg> with <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="511.626px" height="511.627px" viewBox="0 0 511.626 511.627" style="enable-background:new 0 0 511.626 511.627;" xml:space="preserve"><g><path d="M475.366,71.951c-24.175-23.606-57.575-35.404-100.215-35.404c-11.8,0-23.843,2.046-36.117,6.136 c-12.279,4.093-23.702,9.615-34.256,16.562c-10.568,6.945-19.65,13.467-27.269,19.556c-7.61,6.091-14.845,12.564-21.696,19.414 c-6.854-6.85-14.087-13.323-21.698-19.414c-7.616-6.089-16.702-12.607-27.268-19.556c-10.564-6.95-21.985-12.468-34.261-16.562 c-12.275-4.089-24.316-6.136-36.116-6.136c-42.637,0-76.039,11.801-100.211,35.404C12.087,95.552,0,128.288,0,170.162 c0,12.753,2.24,25.889,6.711,39.398c4.471,13.514,9.566,25.031,15.275,34.546c5.708,9.514,12.181,18.796,19.414,27.837 c7.233,9.042,12.519,15.27,15.846,18.699c3.33,3.422,5.948,5.899,7.851,7.419L243.25,469.937c3.427,3.429,7.614,5.144,12.562,5.144 s9.138-1.715,12.563-5.137l177.87-171.307c43.588-43.583,65.38-86.41,65.38-128.475C511.626,128.288,499.537,95.552,475.366,71.951 z"/></g></svg> by <a href="https://patrickwebsdev.github.io/portafolio" alt="Portfolio">PatrickWebs</a></h3>
+    </footer>
+    <div id="toggle__mode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/><path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16"><path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>
+    </div>
+    <div class="bg-dark"></div>
+    <script src="assets/js/app.js"></script>
+    <textarea id="clipboard"></textarea>
+</body>
+</html>
