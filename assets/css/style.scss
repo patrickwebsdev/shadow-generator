@@ -8,7 +8,7 @@
     // Light mode
     --primary-color: #000;
     --secondary-color: #FFF;
-    --aside-bg-color: #EBEBEB;
+    --nav-bg-color: #EBEBEB;
     --body-bg-color: #E7E9EB;
     --input-bg-color: #FFFFFF;
     --input-color: #000;
@@ -24,7 +24,7 @@
     // Dark mode
     --dark-primary-color: #FFFFFF;
     --dark-secondary-color: #000;
-    --dark-aside-bg-color: #090C12;
+    --dark-nav-bg-color: #090C12;
     --dark-body-bg-color: linear-gradient(-90deg, #090C12, #1f2d48);
     --dark-input-bg-color: #636566;
     --dark-input-color: #FFFFFF;
@@ -55,10 +55,10 @@ body {
             display: none;
         }
         #toggleMode {
-            background: var(--dark-aside-bg-color);
+            background: var(--dark-nav-bg-color);
             box-shadow: var(--box-shadow);
             svg, svg * {
-                fill: var(--aside-bg-color);
+                fill: var(--nav-bg-color);
             }
         }
     }
@@ -71,10 +71,10 @@ body {
             display: none;
         }
         #toggleMode {
-            background: var(--aside-bg-color);
+            background: var(--nav-bg-color);
             box-shadow: var(--box-shadow);
             svg, svg * {
-                fill: var(--dark-aside-bg-color);
+                fill: var(--dark-nav-bg-color);
             }
         }
         header {
@@ -85,8 +85,8 @@ body {
         main {
             .main__container {
                 box-shadow: var(--dark-box-shadow);
-                aside {
-                    background-color: var(--dark-aside-bg-color);
+                nav {
+                    background-color: var(--dark-nav-bg-color);
                     h2 {
                         color: var(--dark-primary-color);
                     }
@@ -107,7 +107,7 @@ body {
                             }
                         }
                         .shadow__value {
-                            p {
+                            span {
                                 color: var(--primary-gradient-color);
                                 text-shadow: 0 0 .15em var(--primary-gradient-color), 0 0 .25em var(--secondary-gradient-color);
                             }
@@ -135,23 +135,21 @@ body {
                         }
                     }
                 }
-                section {
-                    article {
-                        &.code {
+                aside {
+                    .code {
+                        background: linear-gradient(140deg, var(--primary-gradient-color), var(--secondary-gradient-color));
+                        &::after {
                             background: linear-gradient(140deg, var(--primary-gradient-color), var(--secondary-gradient-color));
-                            &::after {
-                                background: linear-gradient(140deg, var(--primary-gradient-color), var(--secondary-gradient-color));
-                            }
-                            &::before {
-                                background: linear-gradient(-140deg, var(--primary-gradient-color), var(--secondary-gradient-color));
-                            }
-                            .code__container {
-                                background: var(--dark-glass-bg-color);
-                                border-top: var(--dark-glass-border);
-                                border-left: var(--dark-glass-border);
-                                .code__footer {
-                                    border-top: var(--dark-glass-top-border);
-                                }
+                        }
+                        &::before {
+                            background: linear-gradient(-140deg, var(--primary-gradient-color), var(--secondary-gradient-color));
+                        }
+                        .code__container {
+                            background: var(--dark-glass-bg-color);
+                            border-top: var(--dark-glass-border);
+                            border-left: var(--dark-glass-border);
+                            .code__footer {
+                                border-top: var(--dark-glass-top-border);
                             }
                         }
                     }
@@ -199,10 +197,10 @@ main {
         display: flex;
         overflow: hidden;
         max-width: 1200px;
-        aside {
+        nav {
             width: 35%;
             height: 100%;
-            background-color: var(--aside-bg-color);
+            background-color: var(--nav-bg-color);
             padding: 2em;
             h2 {
                 color: var(--primary-color);
@@ -260,7 +258,7 @@ main {
                     display: flex;
                     justify-content: flex-end;
                     align-items: flex-end;
-                    p {
+                    span {
                         font-size: 1.5em;
                         font-weight: bold;
                         color: var(--primary-gradient-color);
@@ -317,12 +315,12 @@ main {
                 }
             }
         }
-        section {
+        aside {
             width: 65%;
             height: 100%;
             display: flex;
             flex-direction: column;
-            article {
+            div {
                 width: 100%;
                 height: 50%;
                 &.code {
@@ -550,7 +548,7 @@ footer {
         font-size: 100%;
         &.dark {
             header {
-                background: var(--dark-aside-bg-color);
+                background: var(--dark-nav-bg-color);
                 h1 {
                     color: var(--dark-primary-color);
                 }
@@ -561,14 +559,14 @@ footer {
                 }
             }
             footer {
-                background-color: var(--dark-aside-bg-color);
+                background-color: var(--dark-nav-bg-color);
                 h3 {
                     color: var(--dark-primary-color);
                 }
             }
         }
         header {
-            background: var(--aside-bg-color);
+            background: var(--nav-bg-color);
             h1 {
                 font-weight: bold;
                 font-size: 1.5em;
@@ -582,7 +580,7 @@ footer {
                 flex-direction: column;
                 border-radius: 0;
                 box-shadow: none;
-                aside {
+                nav {
                     width: 100%;
                     .shadow__option {
                         .shadow__input {
@@ -605,38 +603,36 @@ footer {
                         }
                     }
                 }
-                section {
+                aside {
                     width: 100%;
-                    article {
-                        &.code {
-                            padding: 2em;
-                            &::before {
-                                bottom: -35vh;
-                                right: -30vh;
+                    .code {
+                        padding: 2em;
+                        &::before {
+                            bottom: -35vh;
+                            right: -30vh;
+                        }
+                        &::after {
+                            top: -35vh;
+                            left: -25vh;
+                        }
+                        .code__container {
+                            .code__body {
+                                padding: 3em 0 5em;
+                                height: calc(100% - 3.5em);
                             }
-                            &::after {
-                                top: -35vh;
-                                left: -25vh;
-                            }
-                            .code__container {
-                                .code__body {
-                                    padding: 3em 0 5em;
-                                    height: calc(100% - 3.5em);
-                                }
-                                .code__footer {
-                                    height: 3.5em;
-                                }
+                            .code__footer {
+                                height: 3.5em;
                             }
                         }
-                        &.shadow {
-                            height: 40vh;
-                        }
+                    }
+                    .shadow {
+                        height: 40vh;
                     }
                 }
             }
         }
         footer {
-            background-color: var(--aside-bg-color);
+            background-color: var(--nav-bg-color);
             h3 {
                 color: var(--primary-color);
             }

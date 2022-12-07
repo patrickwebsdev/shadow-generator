@@ -21,15 +21,14 @@
     border: 0;
     box-sizing: border-box;
     vertical-align: baseline;
-    &:not(.shadow) {
-        transition: background 1s ease, color 1s ease, text-shadow 1s ease;
+    nav, h1, h2, label, span, input, .code__container {
+        transition: background 1s ease, color 1s ease, text-shadow 1s ease, border 1s ease-out;
     }
-    &:not(.shadow__container) {
-        transition: background 1s ease, color 1s ease, text-shadow 1s ease;
+    h3 {
+        transition: color .75s ease;
     }
-    &:not(.developer *) {
-        transition: background 1s ease, color 1s ease, text-shadow 1s ease;
-    }
+    
+
     &.bg-dark {
         transition: opacity 1s ease;
     }
