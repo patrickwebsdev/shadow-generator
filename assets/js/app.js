@@ -122,14 +122,6 @@ function shadow_changes(){
     document.getElementById("moz").innerHTML = boxShadow;
     document.getElementById("shadowBackground").style.background = backgroundEnviroment;
 }
-document.addEventListener('DOMContentLoaded', function(){
-    horizontalOutput.innerHTML = (horizontalInput.value / 10);
-    verticalOutput.innerHTML = (verticalInput.value / 10);
-    blurOutput.innerHTML = (blurInput.value / 10);
-    spreadOutput.innerHTML = (spreadInput.value / 10);
-    opacityOutput.innerHTML = (opacityInput.value / 100);
-    shadow_changes();
-})
 
 
 function hexToRGB(hex, opacity) {
