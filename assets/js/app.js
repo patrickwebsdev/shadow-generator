@@ -1,142 +1,133 @@
-
-const horizontalInput = document.getElementById("horizontalShadow");
-const horizontalOutput = document.getElementById("horizontalValue");
-const verticalInput = document.getElementById("verticalShadow");
-const verticalOutput = document.getElementById("verticalValue");
-const blurInput = document.getElementById("blurShadow");
-const blurOutput = document.getElementById("blurValue");
-const spreadInput = document.getElementById("spreadShadow");
-const spreadOutput = document.getElementById("spreadValue");
-const colorInput = document.getElementById("colorShadowHex");
-const colorInputColor = document.getElementById("colorShadow");
-const opacityInput = document.getElementById("opacityShadow");
-const opacityOutput = document.getElementById("opacityValue");
-const backgroundInput = document.getElementById("backgroundEnviroment");
-const backgroundInputColor = document.getElementById("backgroundColor");
-const boxInput = document.getElementById("boxEnviroment");
-const boxInputColor = document.getElementById("boxColor");
-const clipboard = document.getElementById("copyToClipboard");
-const darkMode = document.getElementById("toggleMode");
+// Show 
 const shadowBox = document.getElementById("shadowContainer");
 
-horizontalInput.oninput = function() {
-    horizontalOutput.innerHTML = (this.value / 10);
-    shadow_changes();
+const valuesElements = {
+    'horizontal': {
+        'input': 'horizontalShadow',
+        'output': 'horizontalValue',
+        'percentage': 10,
+        'event': 'input'
+    },
+    'vertical': {
+        'input': 'verticalShadow',
+        'output': 'verticalValue',
+        'percentage': 10,
+        'event': 'input'
+    },
+    'blur': {
+        'input': 'blurShadow',
+        'output': 'blurValue',
+        'percentage': 10,
+        'event': 'input'
+    },
+    'spread': {
+        'input': 'spreadShadow',
+        'output': 'spreadValue',
+        'percentage': 10,
+        'event': 'input'
+    },
+    'opacity': {
+        'input': 'opacityShadow',
+        'output': 'opacityValue',
+        'percentage': 100,
+        'event': 'input'
+    }
 }
 
-verticalInput.oninput = function() {
-    verticalOutput.innerHTML = (this.value / 10);
-    shadow_changes();
-}
+Object.values(valuesElements).forEach( element => {
+    document.getElementById(element.input)
+        .addEventListener(element.event, (e) => {
+            document.getElementById(element.output).innerHTML = e.target.value / element.percentage;
+            shadow_changes();
+        })
+})
 
-blurInput.oninput = function() {
-    blurOutput.innerHTML = (this.value / 10);
-    shadow_changes();
-}
+const colorsInputs = [
+    {
+        'change': 'colorShadowHex',
+        'input': 'colorShadow',
+    },
+    {
+        'change': 'backgroundEnviroment',
+        'input': 'backgroundColor',
+    },
+    {
+        'change': 'boxEnviroment',
+        'input': 'boxColor',
+    }
+]
 
-spreadInput.oninput = function() {
-    spreadOutput.innerHTML = (this.value / 10);
-    shadow_changes();
-}
+colorsInputs.forEach(element => {
+    const changeElement = document.getElementById(element.change)
+    const inputElement = document.getElementById(element.input)
+    changeElement.addEventListener('change', e => {
+        inputElement.value = e.target.value;
+        shadow_changes();
+    }, false);
+    
+    inputElement.addEventListener('input', (e) => {
+        changeElement.value = e.target.value;
+        shadow_changes();
+    }, false);
+})
 
-colorInput.addEventListener("change", function() {
-    colorInputColor.value = this.value;
-    shadow_changes();
-}, false);
 
-colorInputColor.addEventListener("input", function() {
-    colorInput.value = this.value;
-    shadow_changes();
-}, false);
-
-opacityInput.oninput = function() {
-    opacityOutput.innerHTML = (this.value / 100);
-    shadow_changes();
-}
-
-backgroundInput.addEventListener("change", function() {
-    backgroundInputColor.value = this.value;
-    shadow_changes();
-}, false);
-
-backgroundInputColor.addEventListener("input", function() {
-    backgroundInput.value = this.value;
-    shadow_changes();
-}, false);
-
-boxInput.addEventListener("change", function() {
-    boxInputColor.value = this.value;
-    shadow_changes();
-}, false);
-
-boxInputColor.addEventListener("input", function() {
-    boxInput.value = this.value;
-    shadow_changes();
-}, false);
-
-clipboard.addEventListener("click", function(e){
+// Copy Values
+document.getElementById("copyToClipboard").addEventListener("click", function (e) {
     e.preventDefault();
-    let horizontal = (horizontalInput.value / 10);
-    let vertical = (verticalInput.value / 10);
-    let blur = (blurInput.value / 10);
-    let spread = (spreadInput.value / 10);
-    let color = colorInput.value;
-    let opacity = (opacityInput.value / 100);
-    let shadowConfig = horizontal + "em " + vertical + "em " + blur + "em " + spread + "em " + hexToRGB(color, opacity);
-    let clipboardText = document.getElementById("clipboard");
-    clipboardText.innerHTML = `box-shadow: ${shadowConfig};
--webkit-box-shadow: ${shadowConfig};
--moz-box-shadow: ${shadowConfig};`;
-    clipboardText.select();
-    clipboardText.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(clipboardText.value);
-    this.innerHTML = "¡Copied!";
-    setTimeout(() => {
-        this.innerHTML = "Click to copy";
-    }, 2000);
+    const shadowConfig = getShadowString();
+    const clipboardText = document.getElementById("clipboard");
+    const shadowPreset = `box-shadow: ${shadowConfig};\n` + 
+                         `-webkit-box-shadow: ${shadowConfig};\n` + 
+                         `-moz-box-shadow: ${shadowConfig};`;
+    clipboardText.innerHTML = shadowPreset;
+    navigator.clipboard.writeText(shadowPreset)
+        .then(() => {
+            e.target.innerHTML = "¡Copied!";
+            setTimeout(() => {
+                e.target.innerHTML = "Click to copy";
+            }, 2000);
+        })
+        .catch(e => console.error(e))
 });
 
-darkMode.addEventListener("click", function(e){
+document.getElementById("toggleMode").addEventListener("click", (e) => {
     e.preventDefault();
     document.body.classList.toggle('dark');
     document.body.classList.toggle('light');
 });
 
+function getShadowString(){
+    // Values
+    const v = Object.keys(valuesElements).reduce((acc, el) => {
+        const value = document.getElementById(valuesElements[el].input).value
+        acc[el] = parseInt(value) / valuesElements[el].percentage
+        return acc
+    }, {})
+    console.log(v)
+    const color = document.getElementById('colorShadow').value;
+    return `${v.horizontal}em ${v.vertical}em ${v.blur}em ${v.spread}em ${hexToRGB(color, v.opacity)}`;
+}
 
 function shadow_changes(){
-    let horizontal = (horizontalInput.value / 10);
-    let vertical = (verticalInput.value / 10);
-    let blur = (blurInput.value / 10);
-    let spread = (spreadInput.value / 10);
-    let color = colorInput.value;
-    let opacity = (opacityInput.value / 100);
-    let backgroundEnviroment = backgroundInput.value;
-    let boxEnviroment = boxInput.value;
-    let boxShadow = horizontal + "em " + vertical + "em " + blur + "em " + spread + "em " + hexToRGB(color, opacity);
+    // Update Background colors (box and back element)
+    const backgroundEnvironment = document.getElementById('backgroundColor').value;
+    const boxEnvironment = document.getElementById('boxColor').value;
+    document.getElementById("shadowBackground").style.background = backgroundEnvironment;
+    shadowBox.style.background = boxEnvironment;
+
+    // Update Shadow
+    const boxShadow = getShadowString()
     shadowBox.style.boxShadow = boxShadow;
     shadowBox.style.webkitBoxShadow = boxShadow;
     shadowBox.style.mozBoxShadow = boxShadow;
-    shadowBox.style.background = boxEnviroment;
     document.getElementById("normal").innerHTML = boxShadow;
     document.getElementById("webkit").innerHTML = boxShadow;
     document.getElementById("moz").innerHTML = boxShadow;
-    document.getElementById("shadowBackground").style.background = backgroundEnviroment;
 }
 
-
 function hexToRGB(hex, opacity) {
-    let red = 0;
-    let green = 0
-    let blue = 0;
-    if (hex.length == 4) {
-      red = "0x" + hex[1] + hex[1];
-      green = "0x" + hex[2] + hex[2];
-      blue = "0x" + hex[3] + hex[3];
-    }
-    else if (hex.length == 7) {
-      red = "0x" + hex[1] + hex[2];
-      green = "0x" + hex[3] + hex[4];
-      blue = "0x" + hex[5] + hex[6];
-    }
-    return `rgba(${+red},${+green},${+blue},${opacity})`;
+    const hexOpacity = (~~(opacity * 255)).toString(16)
+    const fixHexOpacity = hexOpacity.length === 1 ? `0${hexOpacity}` : hexOpacity
+    return hex + fixHexOpacity
 }
