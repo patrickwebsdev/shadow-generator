@@ -77,9 +77,9 @@ document.getElementById("copyToClipboard").addEventListener("click", function (e
     e.preventDefault();
     const shadowConfig = getShadowString();
     const clipboardText = document.getElementById("clipboard");
-    const shadowPreset = `box-shadow: ${shadowConfig};
-                         -webkit-box-shadow: ${shadowConfig};
-                         -moz-box-shadow: ${shadowConfig};`;
+    const shadowPreset = `box-shadow: ${shadowConfig};\n` + 
+                         `-webkit-box-shadow: ${shadowConfig};\n` + 
+                         `-moz-box-shadow: ${shadowConfig};`;
     clipboardText.innerHTML = shadowPreset;
     navigator.clipboard.writeText(shadowPreset)
         .then(() => {
